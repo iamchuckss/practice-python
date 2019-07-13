@@ -30,6 +30,7 @@ def is_palindrome(head):
         head = head.next
     return True
 
+
 def is_palindrome_stack(head):
     # True if list has only less than 2 nodes
     if head == None or head.next == None:
@@ -58,9 +59,33 @@ def is_palindrome_stack(head):
     return True
 
 
-
+def is_palindrome_dict(head):
+    if head == None or head.next == None:
+        return True
     
-    
+    d = {}
+    pos = 0
+    while head:
+        if head.val in d.keys():
+            d[head.val].append(pos)
+        else:
+            d[head.val] = [pos]
+        head = head.next
+        pos += 1
+    checksum = pos - 1
+    middle = 0
+    for v in d.values():
+        if len(v) % 2 != 0:
+            middle += 1
+        else:
+            step = 0
+            for i in range(0, len(v)):
+                if v[i] + v[len(v) - 1 - step] != checksum:
+                    return False
+                step += 1
+        if middle > 1:
+            return False
+    return True
 
     
 
