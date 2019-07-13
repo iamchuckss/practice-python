@@ -51,6 +51,15 @@ class Singly_Linked_List:
             curr = next_node
         self.head = prev
 
+    def reverse_recursive(self, item):
+        if item.next is None:
+            self.head = item
+            return
+        self.reverse_recursive(item.next)
+        temp = item.next
+        temp.next = item
+        item.next = None
+
     def print_list(self):
         curr = self.head
         while (curr is not None):
@@ -83,6 +92,10 @@ def main():
     A.print_list()
     print("\nReverse Linked List")
     A.reverse()
+    print("\nPrint List : ")
+    A.print_list()
+    print("\nReverse Linked List")
+    A.reverse_recursive(A.head)
     print("\nPrint List : ")
     A.print_list()
 
