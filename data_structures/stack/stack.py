@@ -4,6 +4,9 @@ class Stack:
     def __init__(self):
         self.stack = []
 
+    def __str__(self):
+        return str(self.stack)
+
     def push(self, data):
         # push an element to the top of the stack
         self.stack.append(data);
